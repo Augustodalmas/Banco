@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transações bancárias</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js"></script>
+    <script>
+      // Não mexer
+      let accounts = [
+        {
+          id: 1,
+          saldo: 1800,
+          titular: "João Ferreira",
+        },
+        {
+          id: 2,
+          saldo: 900,
+          titular: "José de Assis",
+        },
+        {
+          id: 3,
+          saldo: 3200,
+          titular: "Joana marcondes",
+        },
+        {
+          id: 4,
+          saldo: 1500,
+          titular: "Jonas da Silva",
+        },
+        {
+          id: 5,
+          saldo: 3000,
+          titular: "Jaime Camargo",
+        },
+      ];
+
+      function submitForm(event) {
+        event.preventDefault();
+
+        const idPagador = document.getElementById("pag-id");
+        const qtdPagador = document.getElementById("pag-qtd");
+        const idBeneficiario = document.getElementById("ben-id");
+        let quantiaSuficiente = true;
+
+        if (Number(idPagador.value) <= 5 && Number(idBeneficiario.value) <= 5) {
+          accounts.forEach((valor) => {
+            if (Number(idPagador.value) === valor.id) {
+              if (valor.saldo >= 1) {
+                valor.saldo -= Number(qtdPagador.value);
+                quantiaSuficiente = true;
+              } else {
+                alert("Saldo Inválido");
+                quantiaSuficiente = false;
+              }
+            }
+            if (Number(idBeneficiario.value) === valor.id) {
+              if (quantiaSuficiente === true) {
+                valor.saldo += Number(qtdPagador.value);
+              }
+            }
+          });
+        } else {
+          alert("ID INVÁLIDO");
+        }
+        idPagador.value = "";
+        qtdPagador.value = "";
+        idBeneficiario.value = "";
+
+        renderTable(); // Irá renderizar a tabela novamente. NÃO REMOVER!
+      }
+    </script>
+  </head>
+  <body onload="load()">
+    <header>
+      <h1>Transações Bancárias</h1>
+    </header>
+    <main>
+      <div class="card">
+        <h1>Realizar transação</h1>
+        <form onsubmit="submitForm(event)">
+          <div class="center">
+            <div class="formContainer">
+              <div>
+                <h3>Dados do pagador:</h3>
+                <div class="inputContainer">
+                  <label for="pag-id">ID: </label>
+                  <input id="pag-id" placeholder="0" />
+                </div>
+                <div class="inputContainer">
+                  <label for="pag-qtd">Quantidade: </label>
+                  <input
+                    id="pag-qtd"
+                    type="number"
+                    min="1"
+                    placeholder="0.00"
+                  />
+                </div>
+              </div>
+              <div class="relative">
+                <h3>Dados do beneficitário:</h3>
+                <div class="inputContainer">
+                  <label for="ben-id">ID: </label>
+                  <input id="ben-id" placeholder="0" />
+                </div>
+                <div class="buttonContainer">
+                  <button>Confirmar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card">
+        <h1>Clientes</h1>
+
+        <div class="center">
+          <table id="tabelaUsuarios">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Saldo</th>
+              </tr>
+            </thead>
+            <tbody id="tableCorpo"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

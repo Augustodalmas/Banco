@@ -1,0 +1,163 @@
+/*
+Esse arquivo contém todo o css do site.
+Ignore esse arquivo!
+*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --header-height: 60px;
+}
+
+body {
+  font: 400 14px Roboto, sans-serif;
+  background: #f0f0f5;
+  -webkit-font-smoothing: antialiased;
+}
+
+input,
+button,
+textarea {
+  font: 400 18px Roboto, sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+header {
+  min-height: var(--header-height);
+  width: 100%;
+  overflow-x: hidden;
+  color: #fff;
+  background-color: #43a838;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+main {
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+  background-color: #f0f0f5;
+  display: flex;
+  align-items: center;
+  padding: 20px 30px;
+  flex-direction: column;
+}
+
+.center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.center.flex-col {
+  align-items: center;
+  justify-content: inherit;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.card {
+  min-width: 200px;
+  width: 90%;
+  padding: 20px 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  min-height: 100px;
+}
+
+.card :is(h1, h2, h3, h4) {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+#tabelaUsuarios {
+  width: 100%;
+  max-width: 700px;
+}
+
+#tabelaUsuarios tr :is(td, th) {
+  padding: 10px;
+}
+
+#tabelaUsuarios thead tr th {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+#tabelaUsuarios tbody tr:nth-child(odd) {
+  background-color: #f0f0f5;
+}
+
+#tabelaUsuarios tbody tr td:first-of-type {
+  border-radius: 7px 0 0 7px;
+  overflow: hidden;
+}
+#tabelaUsuarios tbody tr td:last-of-type {
+  border-radius: 0 7px 7px 0;
+  overflow: hidden;
+}
+
+#tabelaUsuarios tbody tr td {
+  text-align: center;
+}
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+}
+.inputContainer input {
+  border: 0;
+  background: #f8f8f8;
+  color: #111;
+  border-radius: 5px;
+  width: 200px;
+  padding: 10px 7px;
+  margin-top: 5px;
+}
+.inputContainer + .inputContainer {
+  margin-top: 15px;
+}
+.formContainer {
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: end;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.buttonContainer button {
+  border: 0;
+  background-color: #43a838;
+  color: #fff;
+  padding: 7px 15px;
+  border-radius: 7px;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+.buttonContainer button:hover {
+  background-color: #36882c;
+  box-shadow: 5px 0px 8px -6px rgba(0, 0, 0, 0.5);
+}
+.relative {
+  position: relative;
+}
